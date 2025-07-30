@@ -20,9 +20,9 @@ void replace(char * dst, const char * src)
 
 
 
-    
+
     // ищем бомбу начиная с адреса s
-    p = strstr(s, "bomb");      // p указывает на начало бомбы или NULL
+    p = strstr(s, "bomb");      // p указыва
 
 
     // обезвредим бомбу
