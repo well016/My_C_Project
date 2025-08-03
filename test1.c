@@ -9,13 +9,13 @@ void replace(char * dst, const char * src)
 
     char * s;   // src: указатель на начало подстроки, где ищем bomb
     char * p;   // src: b
-    char * d;   // d
+    char * d;   // ddfdsfdsfds
 
 
     // сначал
     s = (char *)src;            // 
     p = NULL;                   // про бомбу ничего не известно
-    d = dst;                    // еще ничего не скопировали
+    d = dst;                    // еще ничего не скопировалиd asdas
 
 
 
