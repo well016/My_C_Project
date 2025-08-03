@@ -7,7 +7,7 @@ void replace(char * dst, const char * src)
     size_t lenwater = strlen("watermelon");
 
 
-    char * s;   // src: указатель на начало подстроки, где ищем bomb
+    char * s;   // src: указатель на начало подстроки, где ищем bomb github измкенеение
     char * p;   // src: b
     char * d;   // ddfdsfdsfds
 
