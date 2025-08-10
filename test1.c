@@ -1,59 +1,53 @@
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
+#include <math.h>
+#define N 1000
 
-void replace(char * dst, const char * src)
+int compare(const void *p1, const void *p2)
 {
-    size_t lenbomb = strlen("bomb");
-    size_t lenwater = strlen("watermelon");
+    int x = *(int *)p1;
+    int y = *(int *)p2;
+    return (x > y) - (x < y);
+}
 
-
-    char * s;   // src: указатель на начало подстроки, где ищем bomb github измкенеение
-    char * p;   // src: b
-    char * d;   // ddfdsfdsfds
-
-
-    // сначал
-    s = (char *)src;            // 
-    p = NULL;                   // про бомбу ничего не известно
-    d = dst;                    // еще ничего не скопировалиd asdas
-
-
-
-
-
-    // ищем бомбу начиная с адреса s
-    p = strstr(s, "bomb");      // p указыва
-
-
-    // обезвредим бомбу
-     while ((p = strstr(s, "bomb")) != NULL) {            // бомба есть
-        size_t n = p - s;       // количество символов перед бомбой
-        strncpy(d, s, n);       // скопируем символы перед бомбой в dst
-        d = d + n;              // передвинем d в конце строки
-        strcpy(d, "watermelon");// допишем в конец строки арбуз
-        d = d + lenwater;       // передвинем конец строки за арбуз
-
-
-        s = p + lenbomb;        // указатель на остаток строки поставим за бомбой
+void print_arr(int *a, int *even, int n, int len_even)
+{
+    int i, j;
+    for (i = 0, j = 0; i < n; i++)
+    {
+        if (a[i] % 2 == 0)
+        {
+            printf("%d ", even[j]);
+            j++;
+        }
+        else
+            printf("%d ", a[i]);
     }
-
-
-    // оставшаяся строка
-    strcpy(d, s);
 }
 
 int main()
 {
-    char d[1000];
-    char out[1000];
-    while (fgets(d, sizeof(d), stdin) != NULL) {
-        // Удаляем символ новой строки в конце, если он есть
-        size_t len = strlen(d);
-        if (len > 0 && d[len-1] == '\n') {
-            d[len-1] = '\0';
+    int a[N];
+    int even[N];
+    int len_even = 0;
+    int n;
+    int count = 0;
+
+    scanf("%d", &n);
+    for (int i = 0, j = 0; i < n; i++)
+    {
+        scanf("%d", &a[i]);
+        if (a[i] % 2 == 0)
+        {
+            even[j] = a[i];
+            len_even += 1;
+            j++;
         }
-        replace(out, d);
-        printf("%s\n", out);
     }
+    // print_arr(a, n);
+    qsort(even, len_even, sizeof(even[0]), compare);
+    
+    print_arr(a, even, n, len_even);
+
     return 0;
-}   
+}
